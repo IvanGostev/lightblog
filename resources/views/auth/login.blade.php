@@ -16,7 +16,7 @@
                         <br>
                         <label class="authorization__form-label" for="password">Напиши свой пароль<span class="authorization__asterisk"> *</span></label>
                         <input class="authorization__input" id="password" autocomplete="off" type="password" name="password" placeholder="Пароль">
-                        <button class="authorization__btn authorization__btn-phone button button--filled js-audio" name="password" type="submit">Войти
+                        <button class="authorization__btn authorization__btn-phone button button--filled js-audio" type="submit">Войти
                         </button>
                     </div>
 

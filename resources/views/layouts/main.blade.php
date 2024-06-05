@@ -61,12 +61,18 @@
                         @endguest
 
                         @auth()
+                                @if(auth()->user()->role == 1)
+                                    <a class="button button--orange header__create js-audio" href="{{route('admin.post.index')}}">
+                                        <span>Админ панель</span>
+                                    </a>
+                                @endif
                             <form action="{{route('logout')}}" method="post">
                                 @csrf
                                 <button type="submit" class="button button--orange header__create js-audio">
                                     <span>Выйти</span>
                                 </button>
                             </form>
+
                         @endauth
                     </nav>
                 </div>

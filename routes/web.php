@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\PostAdminController;
 use App\Http\Controllers\Admin\TagAdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::group(['prefix' => 'admin', ], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function () {
     Route::group(['prefix' => 'posts',], function () {
         Route::get('/', [PostAdminController::class, 'index'])->name('admin.post.index');
         Route::get('/create', [PostAdminController::class, 'create'])->name('admin.post.create');
