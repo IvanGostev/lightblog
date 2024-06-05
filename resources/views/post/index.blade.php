@@ -39,7 +39,9 @@
                                         @endforeach
                                     </div>
                                     <h3 class="education-item__title js-audio"><span class="text-ellipsis">{{$post->title}}</span>
+                                        <span style="font-weight: 400; font-size: 1rem;">{{$post->created_at}}</span>
                                     </h3>
+
                                     <p class="education-item__description text-ellipsis"></p>
                                     <a class="button button--outlined education-item__btn js-audio"
                                        href="{{route('post.show', $post->id)}}">Прочитать до конца</a>
