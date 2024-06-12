@@ -14,9 +14,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('admin.post.create') }}" class="btn btn-block btn-light">Add</a>
+                                <a href="{{ route('admin.post.create') }}" class="btn btn-block btn-light">Добавить</a>
                                 <br>
-                                <h3 class="card-title">Posts</h3>
+                                <h3 class="card-title">Посты</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">

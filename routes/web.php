@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CommentAdminController;
 use App\Http\Controllers\Admin\ManualAdminController;
 use App\Http\Controllers\Admin\PostAdminController;
 use App\Http\Controllers\Admin\TagAdminController;
@@ -31,6 +32,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
         Route::get('/edit/{post}', [PostAdminController::class, 'edit'])->name('admin.post.edit');
         Route::patch('/{post}', [PostAdminController::class, 'update'])->name('admin.post.update');
         Route::delete('/{post}', [PostAdminController::class, 'destroy'])->name('admin.post.destroy');
+
+    });
+    Route::group(['prefix' => 'comments',], function () {
+        Route::get('/', [CommentAdminController::class, 'index'])->name('admin.comment.index');
+        Route::delete('/{comment}', [CommentAdminController::class, 'destroy'])->name('admin.comment.destroy');
 
     });
     Route::group(['prefix' => 'tags',], function () {

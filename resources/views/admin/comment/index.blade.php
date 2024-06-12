@@ -14,45 +14,43 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('admin.tag.create') }}" class="btn btn-block btn-light">Добавить</a>
-                                <br>
-                                <h3 class="card-title">Теги</h3>
+                                <h3 class="card-title">Комментарии</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width: 10px">ID</th>
-{{--                                        <th style="width: 10px">IMG</th>--}}
-                                        <th style="width: 40px">Название</th>
-                                        <th style="width: 40px"></th>
+                                        <th style="width: 10px; ">ID</th>
+                                        <th>Text</th>
                                         <th style="width: 40px"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($tags as $tag)
-                                        <tr>
-                                            <td style="color: black">{{$tag->id}}</td>
-{{--                                            <td>{{$tag->img}}</td>--}}
-                                            <td>{{$tag->title}}</td>
+                                    @foreach($comments as $comment)
 
-                                               <td> <a class="btn btn-info btn-sm" href="{{route('admin.tag.edit', $tag->id)}}">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>
-                                                    Редактировать
-                                                </a>
+                                        <tr style="background-image: url('{{ asset("storage/" . $comment->banner)}}') ">
+                                            <td style="color: black;">{{$comment->id}}</td>
+                                            <td>
+                                                <p style="border-radius: 5px; opacity: 0.8; background: black; padding: 5px; display: -webkit-box;
+                                                   -webkit-line-clamp: 7;
+                                                   -webkit-box-orient: vertical;
+                                                   overflow: hidden; color: white!important;">{{$comment->text}}</p>
                                             </td>
 
                                             <td>
-                                                <form action="{{ route('admin.tag.destroy', $tag->id) }}" method="post">
+                                                <form action="{{ route('admin.comment.destroy', $comment->id) }}"
+                                                      method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger btn-sm"> <i class="fas fa-trash">
-                                                        </i> Удалить</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fas fa-trash">
+                                                        </i> Удалить
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>
+
                                     @endforeach
                                     </tbody>
                                 </table>
