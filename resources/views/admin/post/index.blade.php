@@ -24,8 +24,9 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 10px; ">ID</th>
-                                        <th>IMG</th>
-                                        <th>Title</th>
+                                        <th>Фото</th>
+                                        <th>Заголовок</th>
+                                        <th style="width: 10px; "><i class="far fa-eye"></i></th>
                                         <th style="width: 80px!important;"></th>
                                         <th style="width: 80px"></th>
                                     </tr>
@@ -35,6 +36,7 @@
 
                                         <tr style="background-image: url('{{ asset("storage/" . $post->banner)}}') ">
                                             <td style="color: black;">{{$post->id}}</td>
+
                                             <td>
                                                 <div>
                                                     <img width="200px" height="200px" style="padding: 15px"
@@ -48,7 +50,7 @@
                                                    overflow: hidden; color: white!important;">{{$post->title}}</p>
                                             </td>
 
-
+                                            <td style="color: black;">{{$post->views}}</td>
                                             <td><a class="btn btn-info btn-sm"
                                                    href="{{route('admin.post.edit', $post->id)}}">
                                                     <i class="fas fa-pencil-alt">

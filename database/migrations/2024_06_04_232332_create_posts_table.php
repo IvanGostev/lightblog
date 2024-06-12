@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('img');
             $table->text('text');
+            $table->unsignedBigInteger('views')->default(0);
             $table->timestamps();
         });
     }

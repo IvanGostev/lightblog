@@ -36,6 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
     });
     Route::group(['prefix' => 'comments',], function () {
         Route::get('/', [CommentAdminController::class, 'index'])->name('admin.comment.index');
+        Route::get('/{comment}/accepted', [CommentAdminController::class, 'accepted'])->name('admin.comment.accepted');
         Route::delete('/{comment}', [CommentAdminController::class, 'destroy'])->name('admin.comment.destroy');
 
     });

@@ -16,9 +16,9 @@ class Post extends Model
     }
     public function comments()
     {
-        return Comment::where('post_id', $this->id)->latest()->get();
+        return Comment::where('post_id', $this->id)->where('status', 1)->latest()->get();
     }
     public function commentsCount() {
-        return Comment::where('post_id', $this->id)->count();
+        return Comment::where('post_id', $this->id)->where('status', 1)->count();
     }
 }

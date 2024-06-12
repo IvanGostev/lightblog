@@ -38,6 +38,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $accepted = !Comment::where('user_id', auth()->user()->id)->first();
+        $post->views = $post->views + 1;
+        $post->update();
         return view('post.show', compact('post', 'accepted'));
     }
 }

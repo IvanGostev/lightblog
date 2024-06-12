@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <main class="main">
         <div class="page">
             <section class="page__header">
@@ -38,7 +39,7 @@
                                                 {{$tag->title}} </a>
                                         @endforeach
                                     </div>
-                                    <h3 class="education-item__title js-audio"><span class="text-ellipsis">{{$post->title}}</span>
+                                    <h3 class="education-item__title js-audio "><span class="text-ellipsis " style="display: flex; justify-content: space-between"><span class="d-block">{{$post->title}}  </span>  <span class="d-block filter-tag filter-tag--orange"><i class="far fa-eye"></i>&nbsp;{{$post->views}}</span>  </span>
                                         <span style="font-weight: 400; font-size: 1rem;">{{$post->created_at}}</span>
                                     </h3>
 

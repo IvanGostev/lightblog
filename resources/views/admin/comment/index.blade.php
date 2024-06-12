@@ -24,6 +24,7 @@
                                         <th style="width: 10px; ">ID</th>
                                         <th>Text</th>
                                         <th style="width: 40px"></th>
+                                        <th style="width: 40px"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -37,7 +38,10 @@
                                                    -webkit-box-orient: vertical;
                                                    overflow: hidden; color: white!important;">{{$comment->text}}</p>
                                             </td>
+                                            <td>
 
+                                                <a class="btn btn-dark" href="{{ route('admin.comment.accepted', $comment->id) }}">{{$comment->status == 0 ? "Активировать" : 'Деактивировать'}}</a>
+                                            </td>
                                             <td>
                                                 <form action="{{ route('admin.comment.destroy', $comment->id) }}"
                                                       method="post">

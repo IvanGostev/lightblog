@@ -21,7 +21,16 @@ class CommentAdminController extends Controller
         $comments = Comment::all();
         return view('admin.comment.index', compact('comments'));
     }
-
+    public function accepted(Comment $comment): RedirectResponse
+    {
+        if ($comment->status == 0) {
+            $comment->status = 1;
+        } else {
+            $comment->status = 0;
+        }
+        $comment->update();
+        return redirect()->route('admin.comment.index');
+    }
     public function destroy(Comment $comment): RedirectResponse
     {
         $comment->delete();

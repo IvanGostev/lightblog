@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(Post::class)->constrained();
             $table->foreignIdFor(User::class)->constrained();
             $table->text('text');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
