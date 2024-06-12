@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
 
+    public function search(Request $request) {
+        $posts = Post::where('title','LIKE',"%{$request->search}%")->orWhere('text','LIKE',"%{$request->search}%")->get();
+        $tags = Tag::all();
+        return view('post.index', compact('tags', 'posts'));
+    }
+
     public function index(Request $request)
     {
         $tags = Tag::all();

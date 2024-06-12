@@ -25,7 +25,7 @@
 
             <!-- Preloader -->
             <div class="preloader flex-column justify-content-center align-items-center">
-               <span>LightBlog</span>
+               <h2>LightBlog</h2>
             </div>
 
             <!-- Navbar -->

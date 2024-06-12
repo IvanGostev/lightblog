@@ -22,7 +22,79 @@
     <script src="{{ asset('js/vendors.js')}}"></script>
     <script src="{{ asset('js/jquery.min.js')}}"></script>
     <script src="{{ asset('js/bedScripts.js')}}"></script>
+<style>
+    /*!*   color variables *!*/
+    /*!*   border radius *!*/
+    /**,*/
+    /**::before,*/
+    /**::after {*/
+    /*    box-sizing: border-box;*/
+    /*    margin: 0;*/
+    /*    padding: 0;*/
+    /*}*/
 
+    /*body {*/
+    /*    font-family: "Convergence", sans-serif;*/
+    /*    height: 100vh;*/
+    /*    display: grid;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
+    /*    font-size: 1.2rem;*/
+    /*    background-color: #060b23;*/
+    /*}*/
+
+    .form {
+        position: relative;
+        width: 20rem;
+        height: 4rem;
+        color: black;
+        background: none;
+    }
+
+    .form_input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #fc8650;
+        border-radius: 1rem;
+        font-family: inherit;
+        font-size: inherit;
+        color: black;
+        outline: none;
+        padding: 1.25rem;
+        background: none;
+    }
+
+    /*.form_input:hover {*/
+    /*    border-color: #adffff;*/
+    /*}*/
+
+    .form_input:focus {
+        border-color: #fc8650;
+    }
+
+    .form_label {
+        position: absolute;
+        font-size: 1rem;
+        left: 1rem;
+        top: 0.8rem;
+        padding: 0.2rem 1rem;
+        cursor: text;
+        transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+        background-color: #fc8650;
+        border-radius: 1rem;
+        color: white;
+    }
+
+    .form_input:focus ~ .form_label,
+    .form_input:not(:placeholder-shown).form_input:not(:focus) ~ .form_label {
+        top: -0.5rem;
+        font-size: 0.8rem;
+        left: 0.8rem;
+    }
+</style>
 </head>
 <body>
 <div class="wrapper">
@@ -53,13 +125,19 @@
                     {{--                    </nav>--}}
 
                     <nav class="navigation header__subnavigation">
+                        <form class="form" action="{{route('post.search')}}" method="get">
+                            <input value="{{isset(request()->search) ? request()->search : ''}}" type="text" name="search" id="trackName" class="form_input" autocomplete="off" placeholder = "">
+                            <label for="trackName" class="form_label">Поиск</label>
+                        </form>
 
                         @guest()
                             <a class="button button--orange header__create js-audio" href="{{route('login')}}">
                                 <span>Вход/Регистрация</span>
                             </a>
                         @endguest
-
+                            <a class="button button--orange header__create js-audio" href="{{route('manual')}}">
+                                <span>Инструкция</span>
+                            </a>
                         @auth()
                                 @if(auth()->user()->role == 1)
                                     <a class="button button--orange header__create js-audio" href="{{route('admin.post.index')}}">
