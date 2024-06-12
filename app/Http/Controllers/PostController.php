@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
+
         $tags = Tag::all();
         if (isset($request->tag)) {
             $posts = Post::join('post_tags', 'posts.id', '=', 'post_tags.post_id')
@@ -35,6 +37,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return view('post.show', compact('post'));
+        $accepted = !Comment::where('user_id', auth()->user()->id)->first();
+        return view('post.show', compact('post', 'accepted'));
     }
 }

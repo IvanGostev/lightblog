@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\PostTag;
 use App\Models\Tag;
@@ -92,6 +93,10 @@ class PostAdminController extends Controller
         $tags = PostTag::where('post_id', $post->id)->get();
         foreach ($tags as $tag) {
             $tag->delete();
+        }
+        $comments = Comment::where('post_id', $post->id)->get();
+        foreach ($comments as $comment) {
+            $comment->delete();
         }
         $post->delete();
         return redirect()->route('admin.post.index');

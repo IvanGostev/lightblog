@@ -29,8 +29,8 @@
                 </div>
                 <div class="page__desc">
                     <p><span class="text-big"
-                              style="background-color:transparent;color:#000000;">&nbsp;{!! $post->text !!}
-                        </span>   </p>
+                             style="background-color:transparent;color:#000000;">&nbsp;{!! $post->text !!}
+                        </span></p>
 
                 </div>
             </div>
@@ -56,24 +56,27 @@
                     @endforeach
                 </div>
                 @auth()
-                    <form class="comments__footer js-comment" method="post" action="{{route('comment.store')}}">
-                        @csrf
-                        <input type="hidden" name="post_id" value="{{$post->id}}">
-                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                    @if($accepted)
+                        <form class="comments__footer js-comment" method="post" action="{{route('comment.store')}}">
+                            @csrf
+                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
 
-                        <input class="comments__input  required" type="text" name="text" placeholder="Напиши свой комментарий">
-{{--                        <div class="post__emoji-list">--}}
-{{--                            <span class="emoji post__emoji-item post-emoji-js">😄</span>--}}
-{{--                            <span class="emoji post__emoji-item post-emoji-js">😁</span>--}}
-{{--                            <span class="emoji post__emoji-item post-emoji-js">😆</span>--}}
-{{--                            <span class="emoji post__emoji-item post-emoji-js">🤣</span>--}}
-{{--                            <span class="emoji post__emoji-item post-emoji-js">😂</span>--}}
-{{--                            <span class="emoji post__emoji-item post-emoji-js">🥰</span>--}}
-{{--                            <span class="emoji post__emoji-item post-emoji-js">😍</span>--}}
-{{--                            <span class="emoji post__emoji-item post-emoji-js">😝</span>--}}
-{{--                        </div>--}}
-                        <button class="button comments__add-btn" type="submit">Добавить комментарий</button>
-                    </form>
+                            <input class="comments__input  required" type="text" name="text"
+                                   placeholder="Напиши свой комментарий">
+                            {{--                        <div class="post__emoji-list">--}}
+                            {{--                            <span class="emoji post__emoji-item post-emoji-js">😄</span>--}}
+                            {{--                            <span class="emoji post__emoji-item post-emoji-js">😁</span>--}}
+                            {{--                            <span class="emoji post__emoji-item post-emoji-js">😆</span>--}}
+                            {{--                            <span class="emoji post__emoji-item post-emoji-js">🤣</span>--}}
+                            {{--                            <span class="emoji post__emoji-item post-emoji-js">😂</span>--}}
+                            {{--                            <span class="emoji post__emoji-item post-emoji-js">🥰</span>--}}
+                            {{--                            <span class="emoji post__emoji-item post-emoji-js">😍</span>--}}
+                            {{--                            <span class="emoji post__emoji-item post-emoji-js">😝</span>--}}
+                            {{--                        </div>--}}
+                            <button class="button comments__add-btn" type="submit">Добавить комментарий</button>
+                        </form>
+                    @endif
                 @endauth
 
                 <br>

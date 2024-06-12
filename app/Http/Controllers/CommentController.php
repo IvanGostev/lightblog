@@ -12,12 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
-
     public function store(Request $request)
     {
-       Comment::create($request->all());
+        if (!Comment::where('user_id', auth()->user()->id)->first()) {
+            Comment::create($request->all());
+        }
         return back();
     }
-
-
 }
